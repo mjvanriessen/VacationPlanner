@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>View All Resorts</title>
+</head>
+<body>
+<h1>All Resorts</h1>
+	<form>
+			<table>
+				<tr th:each="currentResort : ${resorts}" >
+					<td th:text="${currentResort.name}" />
+					<td th:text="${currentResort.address1}" />
+					<td th:text="${currentResort.address2}" />
+					<td th:text="${currentResort.city}" />
+					<td th:text="${currentResort.state}" />
+					<td th:text="${currentResort.zip}" />
+					<td th:text="${currentResort.cost}" />
+					<td><a th:href="@{/edit/{resortId}(resortId=${currentResort.resortId})}">Edit</a></td>
+					<td><a th:href="@{/delete/{resortId}(resortId=${currentResort.resortId})}">Delete</a></td>
+				</tr>
+			</table>
+		</form>
+		<a href="../inputResort">Add a new Resort</a>
+</body>
+</html>

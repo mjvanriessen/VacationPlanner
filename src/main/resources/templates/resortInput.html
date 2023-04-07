@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Add a new Resort</title>
+</head>
+<body>
+	<form name = "newResort" action = "/cgi-bin/test.cgi" th:object="${newResort}" th:action="@{/update/{resortId}(resortId=${newResort.resortId})}" method='POST'> <!--  "@{/inputResort}" -->
+		Resort Name: <input name="name" size="40" th:field="*{name}" > <br />
+		Address1: <input name="address1" size="10" th:field="*{address1}"><br />
+		Address2: <input name="address2" size="10" th:field="*{address2}"><br />
+		City: <input name="city" size="10" th:field="*{city}"><br />
+		State: <input name="state" size="10" th:field="*{state}"><br />
+		Zip Code: <input name="zip" size="10" th:field="*{zip}"><br />
+		Cost: $<input type="number" step="0.01" name="cost" size="6" th:field="*{cost}"><br />
+		<input name="submit" type="submit" value="submit" />
+	</form>
+	<a href="/viewAll">View all Resorts</a>
+</body>
+</html>
