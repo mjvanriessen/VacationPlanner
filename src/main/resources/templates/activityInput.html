@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Add a new Activity</title>
+<script type = "text/javascript">
+		//Form validation code
+	function validate() {
+		if(document.forms["newActivity"]["name"].value == "") {
+			alert("Activity name is required.");
+			document.forms["newActivity"]["name"].focus();
+			return false;
+		}
+		if(document.forms["newActivity"]["type"].value == "") {
+			alert("Activity type is required.");
+			document.forms["newAlbum"]["type"].focus();
+			return false;
+		}
+		if(isNaN(document.forms["newActivity"]["cost"].value)) {
+			alert("Activity Cost should be in numbers.");
+			document.forms["newActivity"]["cost"].focus();
+			return false;
+		}
+		if(document.forms["newActivity"]["cost"].value <= 0.0) {
+			alert("Cost should greater than 0.0.");
+			document.forms["newActivity"]["cost"].focus();
+			return false;
+		}
+		return true;
+	}
+</script>
+</head>
+<body>
+	<form name = "newActivity" action = "/cgi-bin/test.cgi" onsubmit = "return(validate());"
+		th:object="${newActivity}" th:action="@{/update/{activityId}(activityId=${newActivity.activityId})}" method='POST'> <!--  "@{/inputActivity}" -->
+		Activity Name: <input name="name" size="40" th:field="*{name}" > <br />
+		Type: <input name="type" size="10" th:field="*{type}"><br />
+		Cost: $<input type="number" step="0.01" name="cost" size="6" th:field="*{cost}"><br />
+		<input name="submit" type="submit" value="submit" />
+	</form>
+	<a href="/viewAll">View all Activities</a>
+</body>
+</html>
