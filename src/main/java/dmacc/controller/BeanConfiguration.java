@@ -22,7 +22,7 @@ public class BeanConfiguration {
 		return bean;
 	}
 	
-	@Bean
+	/*@Bean
 	public DataSource getDataSource() {
 		return DataSourceBuilder.create()
 				 .driverClassName("com.mysql.cj.jdbc.Driver")
@@ -30,5 +30,5 @@ public class BeanConfiguration {
 		          .username("root")
 		          .password("")
 		          .build();	
-	}
+	}*/
 }

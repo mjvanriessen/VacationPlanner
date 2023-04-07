@@ -21,7 +21,7 @@ public class ActivitiesWebController {
 	@Autowired
 	ActivitiesRepository activitiesRepo;
 	
-	@GetMapping({"/", "/viewAll"})
+	@GetMapping("/viewAllActivities")
 	public String viewAllActivities(Model model)	{
 		if(activitiesRepo.findAll().isEmpty()) {
 			return addNewActivities(model);
@@ -43,20 +43,20 @@ public class ActivitiesWebController {
 		return viewAllActivities(model);
 	}
 	
-	@GetMapping("edit/{activityId}")
+	@GetMapping("editActivity/{activityId}")
 	public String showUpdateActivities(@PathVariable("activityId") long activityId, Model model) {
 		Activities a = activitiesRepo.findById(activityId).orElse(null);
 		model.addAttribute("newActivity", a);
 		return "activityInput";
 	}
 	
-	@PostMapping("/update/{activityId}")
+	@PostMapping("/updateActivity/{activityId}")
 	public String reviseActivities(Activities a, Model model) {
 		activitiesRepo.save(a);
 		return viewAllActivities(model);
 	}
 	
-	@GetMapping("/delete/{activityId}")
+	@GetMapping("/deleteActivity/{activityId}")
 	public String deleteUser(@PathVariable("activityId") long activityId, Model model) {
 		Activities a = activitiesRepo.findById(activityId).orElse(null);
 		activitiesRepo.delete(a);

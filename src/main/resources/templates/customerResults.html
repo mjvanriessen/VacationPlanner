@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>View list of all Customers</title>
+</head>
+<body>
+<h1>List of Customers</h1>
+	<form>
+			<table>
+				<tr th:each="currentCustomer : ${customer}" >
+					<td th:text="${currentCustomer.name}" />
+					<td th:text="${currentCustomer.address1}" />
+					<td th:text="${currentCustomer.address2}" />
+					<td th:text="${currentCustomer.city}" />
+					<td th:text="${currentCustomer.state}" />
+					<td th:text="${currentCustomer.zip}" />
+					<td><a th:href="@{/editCustomer/{customerID}(customerID=${currentCustomer.customerID})}">Edit</a></td>
+					<td><a th:href="@{/deleteCustomer/{customerID}(customerID=${currentCustomer.customerID})}">Delete</a></td>
+				</tr>
+			</table>
+		</form>
+		<a href="../inputCustomer">Add a new Customer</a>
+		<a href="/index">Return to home page</a>
+</body>
+</html>

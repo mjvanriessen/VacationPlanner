@@ -11,8 +11,8 @@
 					<td th:text="${currentActivity.name}" />
 					<td th:text="${currentActivity.type}" />
 					<td th:text="${currentActivity.cost}" />
-					<td><a th:href="@{/edit/{activityId}(activityId=${currentActivity.activityId})}">Edit</a></td>
-					<td><a th:href="@{/delete/{activityId}(activityId=${currentActivity.activityId})}">Delete</a></td>
+					<td><a th:href="@{/editActivity/{activityId}(activityId=${currentActivity.activityId})}">Edit</a></td>
+					<td><a th:href="@{/deleteActivity/{activityId}(activityId=${currentActivity.activityId})}">Delete</a></td>
 				</tr>
 			</table>
 		</form>
