@@ -16,7 +16,7 @@ public class ResortWebController {
 	@Autowired
 	ResortRepository resortRepo;
 	
-	@GetMapping({"/", "/viewAll"})
+	@GetMapping({"/viewAllResorts"})
 	public String viewAllResorts(Model model)	{
 		if(resortRepo.findAll().isEmpty()) {
 			return addNewResort(model);

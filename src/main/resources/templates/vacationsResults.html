@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>View list of all vacations</title>
+</head>
+<body>
+<h1>All Vacations</h1>
+	<form>
+			<table>
+				<tr th:each="vacation : ${vacations}" >
+					<td th:text="${vacation.customer.name}" />
+					<td th:text="${vacation.resort.name}" />
+					<td th:text="${vacation.activity.name}" />  
+					<td><a th:href="@{/editVacation/{vacationId}(vacationId=${vacation.vacationId})}">Edit</a></td>
+					<!-- <td><a th:href="@{/deletevacation/{vacationID}(vacationID=${vacation.vacationId})}">Delete</a></td> -->
+				</tr>
+			</table>
+		</form>
+		<a href="../inputVacation">Add a new Vacation</a><br />
+		<a href="/">Return to home Page</a>
+</body>
+</html>
