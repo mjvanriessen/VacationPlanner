@@ -7,10 +7,10 @@
 <body>
 <h1>Select items to create a new vacation</h1>
 	<form name = "newVacation" 
-		  th:object="${newVacation}" th:action="@{/inputContact}" method='POST'>
+		  th:object="${newVacation}" th:action="@{/inputVacation}" method='POST'> <!-- "@{/updateActivity/{activityId}(activityId=${newActivity.activityId})}" -->
 	
 		Customers:  <br />
-		<select required id="vacations.customerId" name="vacations.customerId">
+		<select required id="customer" name="customer"> <!-- vacations.customerId -->
 			<option value=>Select a Customer</option>
 			<option th:each="customer : ${customers}" 
 					th:value="${customer.customerId}" 
@@ -24,19 +24,19 @@
 		<!-- Customer Name: <input name="customer.name" size="40" th:field="*{customer.name}" > <br />-->
 		
 		Resorts:  <br />
-		<select required id="vacations.resortId" name="vacations.resortId">
+		<select required id="resort" name="resort">
 			<option value=>Select a Resort</option>
 			<option th:each="resort : ${resorts}" 
-					th:value="${resort.name}" 
+					th:value="${resort.resortId}" 
 					th:text="${resort.name}">
 			   <!-- th:selected="${resort.resortId}==*{vacations.resortId}">-->
 			</option>
 		</select> <br /> 
 		
 		Activities:  <br />
-		<select multiple id="vacations.activityId" name="vacations.activityId">
+		<select multiple id="activity" name="activity">
 			<option th:each="activity : ${activities}" 
-					th:value="${activity.name}" 
+					th:value="${activity.activityId}" 
 					th:text="${activity.name}">
 			   <!-- th:selected="${activity.activityId}==*{vacations.activityId}">-->
 			</option>

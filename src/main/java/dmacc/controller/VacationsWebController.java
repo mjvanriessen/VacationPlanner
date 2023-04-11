@@ -47,9 +47,6 @@ public class VacationsWebController {
 			
 	@GetMapping("/inputVacation")	
 	public String addNewVacations(Model model) {
-//		if(CustomerRepo.findAll().isEmpty()) {
-//			return "customerInput";
-//		}
 		model.addAttribute("customers", CustomerRepo.findAll());
 		model.addAttribute("resorts", ResortRepo.findAll());
 		model.addAttribute("activities", ActivitesRepo.findAll());
@@ -61,7 +58,7 @@ public class VacationsWebController {
 	
 	@PostMapping("/inputVacation") 
 	public String addNewVacations(@ModelAttribute Vacations v, Model model) {
-//		System.out.println("Input Vacation " + v );
+		System.out.println("Input Vacation " + v );
 		VacationsRepo.save(v);
 		return viewAllVacations(model);
 	}
@@ -81,7 +78,7 @@ public class VacationsWebController {
 	
 	@PostMapping("/updateVacation/{vacationId}")
 	public String reviseVacations(Vacations v, Model model) {
-		System.out.println("updateVacation ");
+		System.out.println("updateVacation " + v);
 		VacationsRepo.save(v);
 		return viewAllVacations(model);
 	}
