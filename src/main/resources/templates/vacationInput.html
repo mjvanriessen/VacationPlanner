@@ -13,7 +13,7 @@
 		<select required id="vacations.customerId" name="vacations.customerId">
 			<option value=>Select a Customer</option>
 			<option th:each="customer : ${customers}" 
-					th:value="${customer.customerID}" 
+					th:value="${customer.customerId}" 
 					th:text="${customer.name}">
 			   		<!-- th:selected="${customer.customerId}==*{vacations.customerId}"> -->
 			</option>
