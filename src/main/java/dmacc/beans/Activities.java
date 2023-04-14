@@ -8,10 +8,13 @@ package dmacc.beans;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
 import lombok.Data;
 
 @Data
 @Entity
+@Table(name = "activities")
 public class Activities {
 	@Id
 	@GeneratedValue
@@ -19,4 +22,7 @@ public class Activities {
 	private String name;
 	private String type;
 	private double cost;
+	
+	@OneToOne(mappedBy = "activity")
+	private Vacations vacation;
 }

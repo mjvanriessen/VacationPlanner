@@ -15,7 +15,7 @@
 			document.newCustomer.address1.focus();
 			return false;
 		}
-		else if(document.newCustomer.city.value == "")) {
+		else if(document.newCustomer.city.value == "") {  // removed extra ')' at the end - JB
 			alert("City field is required.");
 			document.newCustomer.city.focus();
 			return false;
@@ -35,7 +35,7 @@
 </script>
 </head>
 <body>
-	<form name="newCustomer" th:object="${newCustomer}" th:action="@{/updateCustomer/{customerID}(customerID=${newCustomer.customerID})}" method='POST' onsubmit="return(validate());"> 
+	<form name="newCustomer" th:object="${newCustomer}" th:action="@{/updateCustomer/{customerId}(customerId=${newCustomer.customerId})}" method='POST' onsubmit="return(validate());"> 
 		Customer Name: <input type="text" name="name" size="20" th:field="*{name}" > <br />
 		Address 1: <input type="text" name="address1" size="20" th:field="*{address1}"><br />
 		Address 2: <input type="text" name="address2" size="20" th:field="*{address2}"><br />
@@ -44,6 +44,7 @@
 		Zip: <input type="text" name="zip" size="20" th:field="*{zip}"><br />
 		<input name="submit" type="submit" value="submit" />
 	</form>
-	<a href="/viewAllCustomers">View all Customers</a>
+	<a href="/viewAllCustomers">View all Customers</a> <br />
+	<a href="/">Return to home Page</a>
 </body>
 </html>

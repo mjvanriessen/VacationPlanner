@@ -5,6 +5,9 @@
  */
 package dmacc.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,7 +25,7 @@ public class ActivitiesWebController {
 	ActivitiesRepository activitiesRepo;
 	
 	@GetMapping("/viewAllActivities")
-	public String viewAllActivities(Model model)	{
+	public String viewAllActivities(Model model) {
 		if(activitiesRepo.findAll().isEmpty()) {
 			return addNewActivities(model);
 		}
@@ -34,6 +37,12 @@ public class ActivitiesWebController {
 	public String addNewActivities(Model model) {
 		Activities a = new Activities();
 		model.addAttribute("newActivity", a); //connects to the input pages object name
+		List<String> options = new ArrayList<String>();
+		options.add("Tour");
+		options.add("Art");
+		options.add("Dining");
+		options.add("Night Life");
+		model.addAttribute("options", options);
 		return "activityInput";
 	}
 	

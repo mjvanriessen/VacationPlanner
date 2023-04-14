@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Combine items into a vacation</title>
+</head>
+<body>
+<h1>Select items to create a new vacation</h1>
+	<form name = "newVacation" 
+		  th:object="${newVacation}" th:action="@{/inputVacation}" method='POST'> <!-- "  @{/inputVacation}  @{/updateVacation/{vacationId}(vacationId=${newVacation.vacationId})}" -->
+	
+		Customers:  <br />
+		<select required id="customer" name="customer">
+			<option value=>Select a Customer</option>
+			<option th:each="customer : ${customers}" 
+					th:value="${customer.customerId}" 
+					th:text="${customer.name}">
+			   		<!-- th:selected="${customer.customerId}==*{customer.customerId}">  -->
+			</option>
+		</select> <br /> 
+		
+		Resorts:  <br />
+		<select required id="resort" name="resort"> 
+			<option value=>Select a Resort</option>
+			<option th:each="resort : ${resorts}" 
+					th:value="${resort.resortId}" 
+					th:text="${resort.name}">
+			   		<!-- th:selected="${resort.resortId}==*{resort.resortId}">  -->
+			</option>
+		</select> <br /> 
+		
+		Activities:  <br />
+		<select multiple required id="activity" name="activity">
+			<option value=>Select an Activity</option>
+			<option th:each="activity : ${activities}" 
+					th:value="${activity.activityId}" 
+					th:text="${activity.name}">
+			   		<!-- th:selected="${activity.activityId}==*{activity.activityId}">  -->
+			</option>
+		</select> <br /> 		
+		
+		<input name="submit" type="submit" value="submit" />
+	</form>
+		
+	<a href="/viewAllVacations">View all Vacations</a> <br />
+	<a href="/">Return to home Page</a>
+</body>
+</html>
+
+<!-- action = "/cgi-bin/test.cgi" onsubmit = "return(validate());"  -->

@@ -3,10 +3,13 @@ package dmacc.beans;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
 import lombok.Data;
 
 @Data
 @Entity
+@Table(name = "resort")
 public class Resort {
 	//Private Variables
 	@Id
@@ -20,6 +23,6 @@ public class Resort {
 	private String zip;
 	private String cost;
 	
-	
-	
+	@OneToOne(mappedBy = "resort")
+	private Vacations vacation;
 }

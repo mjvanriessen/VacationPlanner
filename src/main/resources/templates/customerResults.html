@@ -15,12 +15,12 @@
 					<td th:text="${currentCustomer.city}" />
 					<td th:text="${currentCustomer.state}" />
 					<td th:text="${currentCustomer.zip}" />
-					<td><a th:href="@{/editCustomer/{customerID}(customerID=${currentCustomer.customerID})}">Edit</a></td>
-					<td><a th:href="@{/deleteCustomer/{customerID}(customerID=${currentCustomer.customerID})}">Delete</a></td>
+					<td><a th:href="@{/editCustomer/{customerId}(customerId=${currentCustomer.customerId})}">Edit</a></td>
+					<td><a th:href="@{/deleteCustomer/{customerId}(customerId=${currentCustomer.customerId})}">Delete</a></td>
 				</tr>
 			</table>
 		</form>
-		<a href="../inputCustomer">Add a new Customer</a>
-		<a href="/index">Return to home page</a>
+		<a href="../inputCustomer">Add a new Customer</a><br />
+		<a href="/">Return to home page</a>  <!-- removed "index" so it'll go back to home page. -->
 </body>
 </html>

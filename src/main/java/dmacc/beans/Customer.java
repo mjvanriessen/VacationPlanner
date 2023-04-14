@@ -8,18 +8,24 @@ package dmacc.beans;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import jakarta.persistence.OneToOne;
 import lombok.Data;
 
 @Data
 @Entity
-public class Customer {
+@Table(name = "customer")
+public class Customer  {
 	@Id
 	@GeneratedValue
-	private long customerID;
+	private long customerId;
 	private String name;
 	private String address1;
 	private String address2;
 	private String city;
 	private String state;
 	private int zip;
+	
+	@OneToOne(mappedBy = "customer")
+	private Vacations vacation;
 }

@@ -21,10 +21,10 @@ public class CustomerWebController {
 	@Autowired
 	CustomerRepository customerRepo;
 	
-	@GetMapping("/index")
-	public String returnHome() {
-		return "index";
-	}
+//	@GetMapping("/index")
+//	public String returnHome() {
+//		return "index";
+//	}
 	
 	@GetMapping("/viewAllCustomers")
 	public String viewAllCustomers(Model model) {
@@ -48,22 +48,22 @@ public class CustomerWebController {
 		return viewAllCustomers(model);
 	}
 	
-	@GetMapping("editCustomer/{customerID}")
-	public String showUpdateCustomers(@PathVariable("customerID") long customerID, Model model) {
-		Customer c = customerRepo.findById(customerID).orElse(null);
+	@GetMapping("editCustomer/{customerId}")
+	public String showUpdateCustomers(@PathVariable("customerId") long customerId, Model model) {
+		Customer c = customerRepo.findById(customerId).orElse(null);
 		model.addAttribute("newCustomer", c);
 		return "customerInput";
 	}
 	
-	@PostMapping("/updateCustomer/{customerID}")
+	@PostMapping("/updateCustomer/{customerId}")
 	public String updateCustomerInfo(Customer c, Model model) {
 		customerRepo.save(c);
 		return viewAllCustomers(model);
 	}
 	
-	@GetMapping("/deleteCustomer/{customerID}")
-	public String deleteCustomer(@PathVariable("customerID") long customerID, Model model) {
-		Customer c = customerRepo.findById(customerID).orElse(null);
+	@GetMapping("/deleteCustomer/{customerId}")
+	public String deleteCustomer(@PathVariable("customerId") long customerId, Model model) {
+		Customer c = customerRepo.findById(customerId).orElse(null);
 		customerRepo.delete(c);
 		return viewAllCustomers(model);
 	}

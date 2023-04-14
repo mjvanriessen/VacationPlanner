@@ -5,6 +5,7 @@
 <title>View list of all activities</title>
 </head>
 <body>
+<h1>All Activities</h1>
 	<form>
 			<table>
 				<tr th:each="currentActivity : ${activities}" >
@@ -16,6 +17,7 @@
 				</tr>
 			</table>
 		</form>
-		<a href="../inputActivity">Add a new Activity</a>
+		<a href="../inputActivity">Add a new Activity</a><br />
+		<a href="/">Return to home Page</a>
 </body>
 </html>
