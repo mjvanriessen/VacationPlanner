@@ -77,7 +77,7 @@ public class VacationsWebController {
 	}
 	
 	@PostMapping("/updateVacation/{vacationId}")
-	public String reviseVacations(Vacations v, Model model) {
+	public String reviseVacations(@ModelAttribute Vacations v, Model model) {
 		System.out.println("updateVacation " + v);
 		VacationsRepo.save(v);
 		return viewAllVacations(model);
