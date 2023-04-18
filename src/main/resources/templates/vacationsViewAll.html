@@ -10,32 +10,14 @@
 			<table>
 				<tr th:each="vacation : ${vacations}" >
 					<td th:text="${vacation.customer.name}" />
-					<td th:text="${vacation.customer.address1}" />
-					<td th:text="${vacation.customer.address2}" />
-					<td th:text="${vacation.customer.city}" />
-					<td th:text="${vacation.customer.state}" />
-					<td th:text="${vacation.customer.zip}" />
-					
 					<td th:text="${vacation.resort.name}" />
-					<td th:text="${vacation.resort.address1}" />
-					<td th:text="${vacation.resort.address2}" />
-					<td th:text="${vacation.resort.city}" />
-					<td th:text="${vacation.resort.state}" />
-					<td th:text="${vacation.resort.zip}" />
-					<td th:text="${vacation.resort.cost}" />
-					
-					
 					<td th:text="${vacation.activity.name}" />  
-					<td th:text="${vacation.activity.type}" /> 
-					<td th:text="${vacation.activity.cost}" /> 
-					
 					<td><a th:href="@{/editVacation/{vacationId}(vacationId=${vacation.vacationId})}">Edit</a></td>
 					<!-- <td><a th:href="@{/deletevacation/{vacationID}(vacationID=${vacation.vacationId})}">Delete</a></td> -->
 				</tr>
 			</table>
 		</form>
 		<a href="../inputVacation">Add a new Vacation</a><br />
-		<a href="../vacationsResults">View all Vacation information</a><br />
 		<a href="/">Return to home Page</a>
 </body>
 </html>
