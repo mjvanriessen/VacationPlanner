@@ -33,6 +33,7 @@ public class Vacations {
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "activityId", referencedColumnName = "activityId")
 	private Activities activity;
+	private double vacationCost;
 	
 
 }

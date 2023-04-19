@@ -11,7 +11,8 @@
 				<tr th:each="vacation : ${vacations}" >
 					<td th:text="${vacation.customer.name}" />
 					<td th:text="${vacation.resort.name}" />
-					<td th:text="${vacation.activity.name}" />  
+					<td th:text="${vacation.activity.name}" />
+					<td th:text="${vacation.vacationCost}" />  
 					<td><a th:href="@{/editVacation/{vacationId}(vacationId=${vacation.vacationId})}">Edit</a></td>
 					<!-- <td><a th:href="@{/deletevacation/{vacationID}(vacationID=${vacation.vacationId})}">Delete</a></td> -->
 				</tr>

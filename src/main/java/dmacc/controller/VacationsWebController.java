@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import dmacc.beans.Customer;
 import dmacc.beans.Vacations;
 import dmacc.repository.ActivitiesRepository;
 import dmacc.repository.CustomerRepository;
@@ -59,6 +60,8 @@ public class VacationsWebController {
 	@PostMapping("/inputVacation") 
 	public String addNewVacations(@ModelAttribute Vacations v, Model model) {
 		System.out.println("Input Vacation " + v );
+		double vacationCost = v.getResort().getCost() + v.getActivity().getCost();
+		v.setVacationCost(vacationCost);
 		VacationsRepo.save(v);
 		return viewAllVacations(model);
 	}
@@ -86,8 +89,14 @@ public class VacationsWebController {
 	@GetMapping("/deleteVacation/{vacationId}")
 	public String deleteUser(@PathVariable("vacationId") long vacationId, Model model) {
 		Vacations v = VacationsRepo.findById(vacationId).orElse(null);
+		//long customerId = v.getCustomer().getCustomerId();					// Example code to test removing customer from its OWN TABLE
+		//Customer c = CustomerRepo.findById(customerId).orElse(null);
+		//v.setCustomer(null);												// set private customer attribute to null to break the join
+		//CustomerRepo.delete(c);
 		VacationsRepo.delete(v);
 		return viewAllVacations(model);
 	}
+	
+	
 
 }

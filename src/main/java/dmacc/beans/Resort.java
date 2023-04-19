@@ -21,7 +21,7 @@ public class Resort {
 	private String city;
 	private String state;
 	private String zip;
-	private String cost;
+	private double cost;
 	
 	@OneToOne(mappedBy = "resort")
 	private Vacations vacation;

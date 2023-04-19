@@ -42,13 +42,13 @@ public class BeanConfiguration {
 		return bean;
 	}
 	
-	@Bean
+	/*@Bean
 	public DataSource getDataSource() {
 		return DataSourceBuilder.create()
 				 .driverClassName("com.mysql.cj.jdbc.Driver")
 		          .url("jdbc:mysql://localhost:3306/vacationplanner?useSSL=false")
 		          .username("root")
-		          .password("NEW$tudent0821")
+		          .password()
 		          .build();	
-	}
+	}*/
 }
