@@ -31,8 +31,8 @@ public class BeanConfiguration {
 	}
 	
 	@Bean
-	public Activities activites() {
-		Activities bean = new Activities(); //("Boston Self Guided Tour", "Tour", 7.99);
+	public Activities activities() {
+		Activities bean = new Activities();
 		return bean;
 	}
 	
@@ -48,7 +48,7 @@ public class BeanConfiguration {
 				 .driverClassName("com.mysql.cj.jdbc.Driver")
 		          .url("jdbc:mysql://localhost:3306/vacationplanner?useSSL=false")
 		          .username("root")
-		          .password()
+		          .password("NEW$tudent0821")
 		          .build();	
 	}
 }
