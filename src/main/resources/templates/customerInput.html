@@ -1,7 +1,45 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="ISO-8859-1">
+<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+  
+    <style>
+    h1{
+    text-align: center;
+    }
+    header {
+        background-color: darkgray;
+        padding: 15px 0;
+    }
+    section {
+        background-color: darkgray;
+        padding: 50px 0;
+    }
+	nav{
+	border: 2px solid black;
+	}
+    footer {
+        padding: 15px 0;
+		border: 2px solid black;
+		
+    }
+    [class^='col-'] {
+        
+    }
+    .row {
+	margin-left:0;
+	margin-right:0;
+        
+		
+    }
+    .container {
+        border: 2px solid black;
+		background-color: darkgray;
+    }
+  </style>
 <title>Add a new Customer</title>
 <script type = "text/javascript">
 	function validate() {
@@ -34,17 +72,31 @@
 	}
 </script>
 </head>
+<div class="container">
+<header>
+    <div class="mt-4 p-5 bg-dark text-white rounded">
+        <h1>Customer Planning</h1>
+   </div>
+  </header>
 <body>
 	<form name="newCustomer" th:object="${newCustomer}" th:action="@{/updateCustomer/{customerId}(customerId=${newCustomer.customerId})}" method='POST' onsubmit="return(validate());"> 
-		Customer Name: <input type="text" name="name" size="20" th:field="*{name}" > <br />
-		Address 1: <input type="text" name="address1" size="20" th:field="*{address1}"><br />
-		Address 2: <input type="text" name="address2" size="20" th:field="*{address2}"><br />
-		City: <input type="text" name="city" size="20" th:field="*{city}"><br />
-		State: <input type="text" name="state" size="20" th:field="*{state}"><br />
-		Zip: <input type="text" name="zip" size="20" th:field="*{zip}"><br />
-		<input name="submit" type="submit" value="submit" />
+		<h3>Customer Name: </h3> <input type="text" name="name" size="20" th:field="*{name}" > <br />
+		<h3>Address 1: </h3><input type="text" name="address1" size="20" th:field="*{address1}"><br />
+		<h3>Address 2: </h3><input type="text" name="address2" size="20" th:field="*{address2}"><br />
+		<h3>City: </h3><input type="text" name="city" size="20" th:field="*{city}"><br />
+		<h3>State: </h3><input type="text" name="state" size="20" th:field="*{state}"><br />
+		<h3>Zip: </h3><input type="text" name="zip" size="20" th:field="*{zip}"><br />
+		<input name="submit" type="submit" value="submit" class="btn btn-dark  mt-1"/>
 	</form>
-	<a href="/viewAllCustomers">View all Customers</a> <br />
-	<a href="/">Return to home Page</a>
+	<a href="/viewAllCustomers" class="btn btn-dark  mt-1">View all Customers</a> <br />
+	<a href="/" class="btn btn-dark  mt-1">Return to home Page</a>
 </body>
+<div class="bg-dark text-light">
+  <footer>
+       <div class="mt-4 p-5 bg-dark text-white rounded">
+        <h1>Created by Nick Garrels, Julie Burger, Michael Van Riessen</h1>
+   </div>
+  </footer>
+</div>
+</div>
 </html>
