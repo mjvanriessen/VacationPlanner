@@ -48,7 +48,7 @@ public class BeanConfiguration {
 				 .driverClassName("com.mysql.cj.jdbc.Driver")
 		          .url("jdbc:mysql://localhost:3306/vacationplanner?useSSL=false")
 		          .username("root")
-		          .password()
+		          .password("")
 		          .build();	
 	}
 }
