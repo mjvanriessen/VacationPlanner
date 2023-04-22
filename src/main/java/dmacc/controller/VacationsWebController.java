@@ -5,6 +5,9 @@
  */
 package dmacc.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,7 +16,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import dmacc.beans.Activities;
 import dmacc.beans.Customer;
+import dmacc.beans.Resort;
 import dmacc.beans.Vacations;
 import dmacc.repository.ActivitiesRepository;
 import dmacc.repository.CustomerRepository;
@@ -22,6 +27,7 @@ import dmacc.repository.VacationsRespository;
 
 @Controller
 public class VacationsWebController {
+	
 	@Autowired
 	VacationsRespository VacationsRepo;
 	
@@ -32,7 +38,7 @@ public class VacationsWebController {
 	ResortRepository ResortRepo;
 	
 	@Autowired
-	ActivitiesRepository ActivitesRepo;
+	ActivitiesRepository ActivitiesRepo;
 	
 	@GetMapping({"/viewAllVacations"})
 	public String viewAllVacations(Model model)	{
@@ -42,15 +48,36 @@ public class VacationsWebController {
 		model.addAttribute("vacations", VacationsRepo.findAll());
 		model.addAttribute("customers", CustomerRepo.findAll());
 		model.addAttribute("resorts", ResortRepo.findAll());
-		model.addAttribute("activities", ActivitesRepo.findAll());
+		model.addAttribute("activities", ActivitiesRepo.findAll());
 		return "vacationsResults";
 	}
 			
 	@GetMapping("/inputVacation")	
 	public String addNewVacations(Model model) {
+		if(CustomerRepo.count() <= VacationsRepo.count()) {
+			Customer c = new Customer();
+			model.addAttribute("newCustomer", c);
+			return "customerInput";
+		}
+		if(ResortRepo.count() <= VacationsRepo.count()) {
+			Resort r = new Resort();
+			model.addAttribute("newResort", r);
+			return "resortInput";
+		}
+		if(ActivitiesRepo.count() <= VacationsRepo.count()) {
+			Activities a = new Activities();
+			model.addAttribute("newActivity", a); //connects to the input pages object name
+			List<String> options = new ArrayList<String>();
+			options.add("Tour");
+			options.add("Art");
+			options.add("Dining");
+			options.add("Night Life");
+			model.addAttribute("options", options);
+			return "activityInput";
+		}
 		model.addAttribute("customers", CustomerRepo.findAll());
 		model.addAttribute("resorts", ResortRepo.findAll());
-		model.addAttribute("activities", ActivitesRepo.findAll());
+		model.addAttribute("activities", ActivitiesRepo.findAll());
 		
 		Vacations v = new Vacations();
 		model.addAttribute("newVacation", v);
@@ -74,7 +101,7 @@ public class VacationsWebController {
 		
 		model.addAttribute("customers", CustomerRepo.findAll());
 		model.addAttribute("resorts", ResortRepo.findAll());
-		model.addAttribute("activities", ActivitesRepo.findAll());
+		model.addAttribute("activities", ActivitiesRepo.findAll());
 		
 		return "vacationInput";
 	}

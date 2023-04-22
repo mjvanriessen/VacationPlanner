@@ -24,7 +24,7 @@ public class Customer  {
 	private String address2;
 	private String city;
 	private String state;
-	private int zip;
+	private String zip;
 	
 	@OneToOne(mappedBy = "customer")
 	private Vacations vacation;
