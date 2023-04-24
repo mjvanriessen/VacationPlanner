@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ status<!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="utf-8">
@@ -41,6 +41,32 @@
     }
   </style>
 <title>Combine items into a vacation</title>
+<!--<script type = "text/javascript">
+		//Form validation code
+	function validate() {
+		if(document.forms["newVacation"]["customer"].value == "") {
+			alert("Customer is required.");
+			document.forms["newVacation"]["customer"].focus();
+			return false;
+		}
+		 if(document.forms["newVacation"]["type"].value == "") {
+			alert("Activity type is required.");
+			document.forms["newVacation"]["type"].focus();
+			return false;
+		}
+		if(isNaN(document.forms["newVacation"]["cost"].value)) {
+			alert("Activity Cost should be in numbers.");
+			document.forms["newVacation"]["cost"].focus();
+			return false;
+		}
+		if(document.forms["newVacation"]["cost"].value <= 0.0) {
+			alert("Cost should greater than 0.0.");
+			document.forms["newActivity"]["cost"].focus();
+			return false;
+		} 
+		return true;
+	}
+</script>-->
 </head>
 <div class="container">
 <header>
@@ -99,4 +125,4 @@
 </div>
 </html>
 
-<!-- action = "/cgi-bin/test.cgi" onsubmit = "return(validate());"  -->
+<!-- action = "/cgi-bin/test.cgi" onsubmit = "return(validate());" -->
