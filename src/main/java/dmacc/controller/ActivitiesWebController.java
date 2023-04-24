@@ -56,6 +56,12 @@ public class ActivitiesWebController {
 	public String showUpdateActivities(@PathVariable("activityId") long activityId, Model model) {
 		Activities a = activitiesRepo.findById(activityId).orElse(null);
 		model.addAttribute("newActivity", a);
+		List<String> options = new ArrayList<String>();
+		options.add("Tour");
+		options.add("Art");
+		options.add("Dining");
+		options.add("Night Life");
+		model.addAttribute("options", options);
 		return "activityInput";
 	}
 	
